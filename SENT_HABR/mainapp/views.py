@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, View
 from articleapp.models import Article
 from mainapp.services import get_all_articles, get_articles_by_section
 
@@ -28,4 +28,19 @@ class SectionListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(SectionListView, self).get_context_data(**kwargs)
         context['title'] = self.kwargs['section_slug']
+        return context
+
+class SectionHelpView(View):
+    template_name = 'mainapp/help.html'
+    model = Article
+
+    def get_queryset(self):
+        queryset = super(SectionHelpView, self).get_queryset()
+        return get_all_articles(queryset)
+
+    def get_context_data(self, **kwargs):
+        context = super(SectionHelpView, self).get_context_data(**kwargs)
+        context['title'] = 'help'
+
+        # context['title'] = self.kwargs['section_slug']
         return context

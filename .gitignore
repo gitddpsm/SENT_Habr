@@ -132,3 +132,6 @@ dmypy.json
 db.sqlite3
 .vscode/
 users_avatars
+SENT_HABR/articleapp/migrations/0001_initial.py
+SENT_HABR/articleapp/migrations/0002_initial.py
+SENT_HABR/authapp/migrations/0001_initial.py
